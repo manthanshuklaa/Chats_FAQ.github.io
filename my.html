@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Bot Website</title>
+    <style>
+        /* CSS styles for the chat bot container */
+        .chat-bot-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            height: 400px;
+            overflow-y: scroll;
+        }
+        
+        /* CSS styles for the chat bot messages */
+        .message {
+            margin-bottom: 10px;
+        }
+        
+        /* CSS styles for user and bot messages */
+        .user-message {
+            color: blue;
+        }
+        
+        .bot-message {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat Bot</h1>
+    <div class="chat-bot-container" id="chatContainer">
+        <div class="message bot-message">Welcome to the chat bot!</div>
+    </div>
+    
+    <input type="text" id="userInput" placeholder="Type your message here">
+    <button onclick="sendMessage()">Send</button>
+    
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("userInput");
+            var userMessage = userInput.value;
+            
+            // Display user message
+            var chatContainer = document.getElementById("chatContainer");
+            var userMessageElement = document.createElement("div");
+            userMessageElement.className = "message user-message";
+            userMessageElement.innerHTML = userMessage;
+            chatContainer.appendChild(userMessageElement);
+            
+            // Process user message and generate bot response
+            var botResponse = processUserMessage(userMessage);
+            
+            // Display bot response
+            var botMessageElement = document.createElement("div");
+            botMessageElement.className = "message bot-message";
+            botMessageElement.innerHTML = botResponse;
+            chatContainer.appendChild(botMessageElement);
+            
+            // Clear user input
+            userInput.value = "";
+        }
+        
+        function processUserMessage(message) {
+            // Add your chat bot logic here
+            // You can use if-else statements or switch statements to handle different user messages
+            // You can also make API calls to fetch dynamic responses from a server
+            
+            // For this simple example, let's just return a static response
+            return "This is a bot response.";
+        }
+    </script>
+</body>
+</html>
